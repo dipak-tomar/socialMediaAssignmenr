@@ -56,9 +56,9 @@ export function navigateAndSimpleReset(
   }
 }
 
-let Width = Dimensions.get('window').width;
-let Height = Dimensions.get('window').height;
+
 
 export const IS_ANDROID = Platform.OS === 'android';
 
-const screenHeight = Dimensions.get('window').height;
+export const screenHeight = Dimensions.get('window').height;
+export const screenWidth = Dimensions.get('window').width;

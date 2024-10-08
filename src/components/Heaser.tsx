@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flex: 1,
     textAlign: 'center',
+     color: '#000'
   },
   rightButtonsContainer: {
     flexDirection: 'row',

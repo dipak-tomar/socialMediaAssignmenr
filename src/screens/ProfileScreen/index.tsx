@@ -16,11 +16,26 @@ const screenWidth = Dimensions.get('window').width;
 
 // Dummy data for posts
 const posts = [
-  {id: '1', imageUrl: 'https://via.placeholder.com/150'},
-  {id: '2', imageUrl: 'https://via.placeholder.com/150'},
-  {id: '3', imageUrl: 'https://via.placeholder.com/150'},
-  {id: '4', imageUrl: 'https://via.placeholder.com/150'},
-  {id: '5', imageUrl: 'https://via.placeholder.com/150'},
+  {
+    id: '1',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+  },
+  {
+    id: '2',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+  },
+  {
+    id: '3',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+  },
+  {
+    id: '4',
+    imageUrl: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d',
+  },
+  {
+    id: '5',
+    imageUrl: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d',
+  },
 ];
 
 // Profile Header Component
@@ -62,7 +77,7 @@ const PostGrid = ({posts}) => (
 
 const ProfileScreen = () => {
   // Sample profile data
-  const profileImage = 'https://via.placeholder.com/100';
+  const profileImage = 'https://randomuser.me/api/portraits/men/1.jpg';
   const username = 'johndoe';
   const bio = 'Photographer & Traveler';
   const postsCount = posts.length;
@@ -105,6 +120,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#000'
   },
   bio: {
     color: '#888',
@@ -124,6 +140,7 @@ const styles = StyleSheet.create({
   statCount: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#000'
   },
   statLabel: {
     fontSize: 12,

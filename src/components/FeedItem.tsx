@@ -8,42 +8,46 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FeedImage from './FeedImage';
+import { Post } from '../services/postsService';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-const FeedItem = ({post}) => {
+interface FeedItemProps {
+  post: Post;
+}
+
+const FeedItem = ({post}: FeedItemProps) => {
   const [liked, setLiked] = useState(post.liked);
 
   const handleLike = () => {
     setLiked(!liked);
   };
 
+  console.log("post images",post?.images);
+  
+
   return (
     <View style={styles.feedItemContainer}>
       {/* User Info */}
       <View style={styles.userInfo}>
         <Image source={{uri: post.avatar}} style={styles.avatar} />
-        <Text>{post.username}</Text>
+        <Text style={{color: "#000"}}>{post.username}</Text>
       </View>
 
-      {/* Image Carousel */}
-      <Carousel
-        data={post.images}
-        renderItem={({item}) => (
-          <FastImage
-            style={styles.image}
-            source={{uri: item as string}}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-        )}
-        sliderWidth={screenWidth}
-        itemWidth={screenWidth - 40}
-        loop
+      <FlatList
+        horizontal
+        style={{width: screenWidth - 40}}
+        showsHorizontalScrollIndicator={false}
+        data={JSON.parse(post.images)}
+        renderItem={({item}) => {
+          return <FeedImage uri={item?.uri} mediaType={item?.type} />;
+        }}
       />
 
+      {/* title */}
+      <Text style={styles.description}>{post.title}</Text>
       {/* Description */}
       <Text style={styles.description}>{post.description}</Text>
 
@@ -88,6 +92,7 @@ const styles = StyleSheet.create({
   description: {
     marginTop: 10,
     fontSize: 14,
+     color: '#000'
   },
   likeButton: {
     marginTop: 10,
